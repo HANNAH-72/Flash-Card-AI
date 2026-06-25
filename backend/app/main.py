@@ -227,7 +227,7 @@ def create_default_demo_user():
 # Allows frontend React application to securely communicate with the FastAPI server
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # In production, restrict to Vercel domain
+    allow_origins=["*", "https://flash-card-ai-j68p.vercel.app/"], # In production, restrict to Vercel domain
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
