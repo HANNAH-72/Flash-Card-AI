@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: flashmind-ai-backend
+    runtime: python
+    buildCommand: pip install -r backend/requirements.txt && python -m spacy download en_core_web_sm && python -c "import nltk; nltk.download('stopwords'); nltk.download('punkt')"
+    startCommand: uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: PYTHON_VERSION
+        value: 3.11.9

@@ -1,0 +1,29 @@
+{
+  "short_name": "FlashMind AI",
+  "name": "FlashMind AI - Smart Flashcard Generator",
+  "description": "AI-powered spaced repetition system that automatically converts study notes and PDF documents into interactive smart flashcards.",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    },
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#0f172a",
+  "display": "standalone",
+  "theme_color": "#6366f1",
+  "orientation": "portrait"
+}

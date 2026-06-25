@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+/* --- Design Tokens and Variable Framework --- */
+:root {
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+  font-family: var(--font-sans);
+}
+
+/* --- Theme Variable Definitions --- */
+.theme-light {
+  --app-bg: linear-gradient(135deg, #f8fafc 0%, #eef2ff 40%, #dbeafe 100%);
+  --card-bg: rgba(255, 255, 255, 0.7);
+  --card-border: rgba(99, 102, 241, 0.12);
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --primary-color: #6366F1;
+  --primary-glow: rgba(99, 102, 241, 0.15);
+  --accent-gradient: linear-gradient(135deg, #6366F1 0%, #8b5cf6 100%);
+  --sidebar-active-bg: linear-gradient(135deg, #6366F1 0%, #8b5cf6 100%);
+  --blob-one: rgba(99, 102, 241, 0.25);
+  --blob-two: rgba(14, 165, 233, 0.2);
+  --blob-three: rgba(168, 85, 247, 0.15);
+}
+
+.theme-dark {
+  --app-bg: linear-gradient(135deg, #0f172a 0%, #111827 40%, #1e293b 100%);
+  --card-bg: rgba(15, 23, 42, 0.45);
+  --card-border: rgba(255, 255, 255, 0.05);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --primary-color: #818cf8;
+  --primary-glow: rgba(129, 140, 248, 0.25);
+  --accent-gradient: linear-gradient(135deg, #818cf8 0%, #a78bfa 100%);
+  --sidebar-active-bg: linear-gradient(135deg, #818cf8 0%, #a78bfa 100%);
+  --blob-one: rgba(99, 102, 241, 0.15);
+  --blob-two: rgba(14, 165, 233, 0.1);
+  --blob-three: rgba(168, 85, 247, 0.1);
+}
+
+.theme-purple {
+  --app-bg: linear-gradient(135deg, #090514 0%, #0f0a24 40%, #1b0a3a 100%);
+  --card-bg: rgba(15, 10, 36, 0.5);
+  --card-border: rgba(168, 85, 247, 0.15);
+  --text-primary: #faf5ff;
+  --text-secondary: #c084fc;
+  --primary-color: #a855f7;
+  --primary-glow: rgba(168, 85, 247, 0.35);
+  --accent-gradient: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+  --sidebar-active-bg: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+  --blob-one: rgba(168, 85, 247, 0.25);
+  --blob-two: rgba(236, 72, 153, 0.2);
+  --blob-three: rgba(99, 102, 241, 0.15);
+}
+
+.theme-ocean {
+  --app-bg: linear-gradient(135deg, #02141d 0%, #032533 40%, #053c52 100%);
+  --card-bg: rgba(3, 37, 51, 0.5);
+  --card-border: rgba(6, 182, 212, 0.15);
+  --text-primary: #ecfeff;
+  --text-secondary: #22d3ee;
+  --primary-color: #06b6d4;
+  --primary-glow: rgba(6, 182, 212, 0.35);
+  --accent-gradient: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+  --sidebar-active-bg: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+  --blob-one: rgba(6, 182, 212, 0.25);
+  --blob-two: rgba(59, 130, 246, 0.2);
+  --blob-three: rgba(20, 184, 166, 0.15);
+}
+
+.theme-emerald {
+  --app-bg: linear-gradient(135deg, #021a0e 0%, #042e18 40%, #064c27 100%);
+  --card-bg: rgba(4, 46, 24, 0.5);
+  --card-border: rgba(16, 185, 129, 0.15);
+  --text-primary: #f0fdf4;
+  --text-secondary: #34d399;
+  --primary-color: #10b981;
+  --primary-glow: rgba(16, 185, 129, 0.35);
+  --accent-gradient: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+  --sidebar-active-bg: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+  --blob-one: rgba(16, 185, 129, 0.25);
+  --blob-two: rgba(6, 182, 212, 0.2);
+  --blob-three: rgba(234, 179, 8, 0.15);
+}
+
+/* --- Base Body Application Overwrite --- */
+body {
+  font-family: var(--font-sans);
+  background: var(--app-bg) !important;
+  color: var(--text-primary);
+  background-attachment: fixed;
+  transition: background 0.5s ease-in-out, color 0.3s ease;
+  min-height: 100vh;
+}
+
+/* Base scrollbar styling using soft transparent shades */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.15);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}
+
+/* --- Glassmorphism UI Panels --- */
+.glass-panel {
+  background: var(--card-bg);
+  backdrop-filter: blur(20px) saturate(130%);
+  -webkit-backdrop-filter: blur(20px) saturate(130%);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+  color: var(--text-primary);
+}
+
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 24px;
+  color: var(--text-primary);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Requirement 4: Scale, increase shadow intensity, and glow on hover */
+.glass-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: var(--primary-color);
+  box-shadow: 0 12px 35px 0 var(--primary-glow);
+}
+
+/* Glass inputs */
+.glass-input {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--card-border);
+  color: var(--text-primary);
+  transition: all 0.25s ease-in-out;
+}
+
+.glass-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--primary-glow);
+}
+
+/* --- Card Flip Animations --- */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.flip-transition {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Custom AI visual effects --- */
+.neon-glow {
+  box-shadow: 0 0 20px 2px var(--primary-glow);
+}
+
+.animate-gradient-text {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% auto;
+  animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Staggered card load effects */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.2s; }
+.stagger-5 { animation-delay: 0.25s; }
+
+/* Dynamic Floating Aurora Blobs Animation */
+@keyframes float-blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(50px, -70px) scale(1.2);
+  }
+  66% {
+    transform: translate(-40px, 40px) scale(0.85);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: float-blob 20s infinite ease-in-out;
+}
+
+.animation-delay-2000 {
+  animation-delay: 4s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 8s;
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+/* Floating particles and neon glow accents */
+@keyframes float-particle-1 {
+  0%, 100% { transform: translateY(0) translateX(0) scale(1); }
+  50% { transform: translateY(-40px) translateX(20px) scale(1.15); }
+}
+@keyframes float-particle-2 {
+  0%, 100% { transform: translateY(0) translateX(0) scale(1.1); }
+  50% { transform: translateY(-20px) translateX(-35px) scale(0.9); }
+}
+@keyframes float-particle-3 {
+  0%, 100% { transform: translateY(0) translateX(0) scale(0.9); }
+  50% { transform: translateY(-50px) translateX(-15px) scale(1.1); }
+}
+
+.animate-particle-1 {
+  animation: float-particle-1 15s infinite ease-in-out;
+}
+.animate-particle-2 {
+  animation: float-particle-2 18s infinite ease-in-out;
+}
+.animate-particle-3 {
+  animation: float-particle-3 22s infinite ease-in-out;
+}
+
+.delay-1000 { animation-delay: 1s; }
+.delay-3000 { animation-delay: 3s; }
+.delay-5000 { animation-delay: 5s; }
