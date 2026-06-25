@@ -7,7 +7,6 @@ from app import models
 from app.auth import hash_password, verify_password
 
 # Create all database tables (PostgreSQL) on startup
-Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="FlashMind AI – Smart Flashcard Generator API",
