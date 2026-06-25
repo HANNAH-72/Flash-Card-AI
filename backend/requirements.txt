@@ -1,11 +1,39 @@
 fastapi>=0.100.0
-uvicorn>=0.20.0
+uvicorn[standard]>=0.20.0
+
+# Database
 sqlalchemy>=2.0.0
-pydantic[email]>=2.0.0
-pydantic-settings>=2.0.0
+psycopg2-binary>=2.9.0
+
+# Authentication
 bcrypt>=4.0.0
 PyJWT>=2.8.0
+
+# Pydantic (FastAPI v2 compatible)
+pydantic[email]>=2.0.0
+pydantic-settings>=2.0.0
+
+# IMPORTANT (fixes your earlier crash)
+python-multipart>=0.0.6
+
+# File handling / PDF
 pypdf>=4.0.0
-spacy>=3.6.0
+
+# NLP / AI
 nltk>=3.8.0
-psycopg2-binary>=2.9.0
+spacy>=3.6.0
+
+# Optional ML / embeddings (recommended for flashcards AI)
+sentence-transformers>=2.2.0
+transformers>=4.30.0
+torch>=2.0.0
+
+# Utilities
+numpy>=1.24.0
+pandas>=2.0.0
+
+# Environment variables
+python-dotenv>=1.0.0
+
+# HTTP requests (if used in routers/services)
+requests>=2.31.0
